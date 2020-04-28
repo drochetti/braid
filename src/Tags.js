@@ -1,6 +1,6 @@
-import React from 'react';
+import { faAsterisk, faBug, faCog, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBug, faCog, faAsterisk } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 export const FeatureTag = () => (
   <span className="tag card-title-tag is-rounded is-light is-primary" data-testid="feature-tag">
@@ -198,11 +198,11 @@ export const BlockedTag = ({ visible }) => (
   <span
     style={{
       position: 'absolute',
-      top: '10px',
+      top: '4px',
       right: '0',
       height: '1.75em',
       fontSize: '.65rem',
-      opacity: visible ? '1' : '0',
+      opacity: visible ? '0.75' : '0',
       transition: 'opacity 1s',
       borderTopRightRadius: '0',
       borderBottomRightRadius: '0'
@@ -210,6 +210,9 @@ export const BlockedTag = ({ visible }) => (
     className="tag is-warning"
     data-testid="blocked-tag"
   >
-    Blocked
+    <span className="icon">
+      <FontAwesomeIcon icon={faExclamationTriangle} size="xs" />
+    </span>
+    <span>Blocked</span>
   </span>
 );
