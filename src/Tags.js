@@ -113,13 +113,14 @@ export const ProgressTag = ({ tasks, width = 18, height = 18 }) => {
     <>
       <span
         className="tag is-light"
-        style={{ paddingLeft: '3px', paddingRight: '3px' }}
+        style={{ paddingLeft: '3px', paddingRight: '3px', backgroundColor: 'transparent' }}
         data-testid="progress-tag"
         role="progressbar"
         aria-valuenow={completedTasks}
         aria-valuemin={0}
         aria-valuemax={totalTasks}
         aria-valuetext={`${completedTasks} of ${totalTasks} tasks complete.`}
+        title={`${completedTasks} of ${totalTasks} tasks`}
       >
         <svg width={width} height={height}>
           <circle

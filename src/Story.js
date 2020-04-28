@@ -25,7 +25,7 @@ const renderTypeTag = type => {
   }
 };
 
-const subheaderStyle = {
+const rowStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -78,8 +78,8 @@ function Story({
             {name}
           </a>
         </div>
-        <div className="is-size-7 has-text-grey-light" style={subheaderStyle}>
-        {(estimate && estimate > 0 ?
+        <div className="is-size-7 has-text-grey-light" style={rowStyle}>
+        {(!slim && estimate && estimate > 0 ?
           <span>
             <span className="has-text-weight-bold">{estimate}</span>
             <span>&nbsp;points</span>
@@ -87,7 +87,7 @@ function Story({
           :
           <span />
         )}
-          <Owners ownerIds={ownerIds} />
+        {!slim && <ProgressTag tasks={tasks} />}
         </div>
 
         {slim ? (
@@ -99,21 +99,21 @@ function Story({
         ) : (
           <div className="media">
             <div className="media-content">
-              <span className="tags is-marginless">
-                <ProgressTag tasks={tasks} />
-              </span>
               <div className="tags is-marginless">
                 {labels.map(label => (
                   <LabelTag name={label.name} key={label.id} />
                 ))}
                 <BlockedTag visible={hasUnresolvedBlockers(blockers)} />
               </div>
-              <p className="is-size-7 has-text-grey-light has-text-right">
-                <span>last updated&nbsp;</span>
-                <span className="has-text-weight-bold">
-                  {moment(updatedAt).fromNow()}
+              <div className="is-size-7 has-text-grey-light" style={{ ...rowStyle, marginBottom: '0px' }}>
+                <span>
+                  <span>last updated&nbsp;</span>
+                  <span className="has-text-weight-bold">
+                    {moment(updatedAt).fromNow()}
+                  </span>
                 </span>
-              </p>
+                <Owners ownerIds={ownerIds} />
+              </div>
             </div>
           </div>
         )}
