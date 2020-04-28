@@ -1,10 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 import { Owners } from './Owners';
 import {
   BlockedTag,
   BugTag,
   ChoreTag,
-  EstimateTag,
   FeatureTag,
   LabelTag,
   ProgressTag,
@@ -25,6 +25,13 @@ const renderTypeTag = type => {
   }
 };
 
+const subheaderStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  margin: '4px 0 10px 0'
+};
+
 function Story({
   id,
   name,
@@ -36,13 +43,21 @@ function Story({
   tasks,
   url,
   currentState,
+  updatedAt,
   onDragStart,
   onDragEnd,
   slim
 }) {
+  const cardStyles = {
+    marginBottom: slim ? '0.4rem' : '0.8rem'
+  };
+  const contentPadding = {
+    padding: slim ? '0.6rem' : '1rem'
+  };
   return (
     <div
       className="card"
+      style={cardStyles}
       draggable
       data-story-id={id}
       data-url={url}
@@ -51,8 +66,9 @@ function Story({
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
     >
-      <div className="card-content" style={slim ? { padding: '1rem' } : {}}>
-        <div className={`subtitle ${slim ? 'is-5 is-marginless' : 'is-4'}`}>
+      <div className="card-content" style={{ ...contentPadding }}>
+        <div className="subtitle is-6 is-marginless">
+          {renderTypeTag(storyType)}
           <a
             href={url}
             className="has-text-grey-dark has-hover-underline"
@@ -61,6 +77,17 @@ function Story({
           >
             {name}
           </a>
+        </div>
+        <div className="is-size-7 has-text-grey-light" style={subheaderStyle}>
+        {(estimate && estimate > 0 ?
+          <span>
+            <span className="has-text-weight-bold">{estimate}</span>
+            <span>&nbsp;points</span>
+          </span>
+          :
+          <span />
+        )}
+          <Owners ownerIds={ownerIds} />
         </div>
 
         {slim ? (
@@ -72,24 +99,22 @@ function Story({
         ) : (
           <div className="media">
             <div className="media-content">
-              <div className="tags has-addons is-marginless">
-                {renderTypeTag(storyType)}
-
-                <EstimateTag estimate={estimate} />
-
+              <span className="tags is-marginless">
                 <ProgressTag tasks={tasks} />
-
+              </span>
+              <div className="tags is-marginless">
                 {labels.map(label => (
                   <LabelTag name={label.name} key={label.id} />
                 ))}
+                <BlockedTag visible={hasUnresolvedBlockers(blockers)} />
               </div>
+              <p className="is-size-7 has-text-grey-light has-text-right">
+                <span>last updated&nbsp;</span>
+                <span className="has-text-weight-bold">
+                  {moment(updatedAt).fromNow()}
+                </span>
+              </p>
             </div>
-
-            <div className="media-right">
-              <Owners ownerIds={ownerIds} />
-            </div>
-
-            <BlockedTag visible={hasUnresolvedBlockers(blockers)} />
           </div>
         )}
       </div>

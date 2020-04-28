@@ -8,10 +8,10 @@ const Navbar = ({ name, projects, onLogout }) => (
   <nav className="navbar is-transparent" aria-label="main navigation">
     <div className="navbar-brand">
       <Link className="navbar-item" to="/projects">
-        <img height="28px" width="28px" src={icon} alt="Braid logo" />
+        <img width="16px" src={icon} alt="Braid logo" />
         <h1
-          className="title has-text-weight-semibold"
-          style={{ marginLeft: '.3rem' }}
+          className="title has-text-weight-medium is-uppercase is-size-5"
+          style={{ marginLeft: '.6rem' }}
         >
           Braid
         </h1>
@@ -73,7 +73,10 @@ const Navbar = ({ name, projects, onLogout }) => (
         <a className="navbar-item" href="https://github.com/jobn/braid">
           <FontAwesomeIcon icon={faGithub} />
         </a>
-        <div className="navbar-item">Signed in as {name}</div>
+        <div className="navbar-item has-text-grey is-size-7">
+          <span className="has-text-weight-light">Signed in as&nbsp;</span>
+          <span className="has-text-weight-medium">{name}</span>
+        </div>
         <div className="navbar-item">
           <button className="button is-small" onClick={onLogout}>
             Sign out

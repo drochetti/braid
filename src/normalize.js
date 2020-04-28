@@ -31,8 +31,10 @@ export const normalize = ({
   epicsResponse
 }) => {
   const currentIteration = iterationResponse[0];
+  const allStories = iterationResponse.map(iter => iter.stories).flat();
 
-  const { stories: allStories, ...iteration } = currentIteration;
+  const { ...iteration } = currentIteration;
+
   const userStories = allStories.filter(removeReleaseStories);
 
   const people = normalizeArray(membershipsResponse.map(item => item.person));

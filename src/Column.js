@@ -57,7 +57,9 @@ const Column = props => {
         ...(isIllegalTarget ? illegalTargetStyle : {})
       }}
     >
-      <h4 className="title is-4 has-text-centered">{title}</h4>
+      <h4 className="title is-5 has-text-centered is-uppercase has-text-weight-light has-text-grey-light">
+        {title}
+      </h4>
 
       {filter(storyIds, stories, storyStates).map(story => (
         <Story

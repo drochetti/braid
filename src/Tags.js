@@ -1,29 +1,29 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBug, faCog, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faBug, faCog, faAsterisk } from '@fortawesome/free-solid-svg-icons';
 
 export const FeatureTag = () => (
-  <div className="tag is-primary" data-testid="feature-tag">
-    <span className="icon">
-      <FontAwesomeIcon icon={faStar} />
+  <span className="tag card-title-tag is-rounded is-light is-primary" data-testid="feature-tag">
+    <span className="icon is-small">
+      <FontAwesomeIcon icon={faAsterisk} size="xs" />
     </span>
-  </div>
+  </span>
 );
 
 export const BugTag = () => (
-  <div className="tag is-danger" data-testid="bug-tag">
-    <span className="icon">
-      <FontAwesomeIcon icon={faBug} />
+  <span className="tag card-title-tag is-rounded is-light is-danger" data-testid="bug-tag">
+    <span className="icon is-small">
+      <FontAwesomeIcon icon={faBug} size="xs" />
     </span>
-  </div>
+  </span>
 );
 
 export const ChoreTag = () => (
-  <div className="tag is-info" data-testid="chore-tag">
-    <span className="icon">
-      <FontAwesomeIcon icon={faCog} />
+  <span className="tag card-title-tag is-rounded is-light is-info" data-testid="chore-tag">
+    <span className="icon is-small">
+      <FontAwesomeIcon icon={faCog} size="xs" />
     </span>
-  </div>
+  </span>
 );
 
 export const EstimateTag = ({ estimate }) => {
@@ -32,7 +32,7 @@ export const EstimateTag = ({ estimate }) => {
   }
 
   return (
-    <span className="tag is-dark" data-testid="estimate-tag">
+    <span className="tag is-light" data-testid="estimate-tag">
       {estimate}
     </span>
   );
