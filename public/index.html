@@ -41,6 +41,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/bulma-prefers-dark"
+    />
 
     <title>Braid</title>
     <style>
@@ -67,6 +72,16 @@
 
       .card .card-title-tag {
         margin-right: 4px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #242628;
+        }
+        .card {
+          background: #1e1d1d;
+          box-shadow: 0 2px 3px rgba(10, 10, 10, 0.3), 0 0 0 1px rgba(10, 10, 10, 0.3);
+        }
       }
 
       /** Switch  -------------------------------------
