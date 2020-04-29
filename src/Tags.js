@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 export const FeatureTag = () => (
-  <span className="tag card-title-tag is-rounded is-light is-primary" data-testid="feature-tag">
+  <span className="tag card-title-tag is-rounded is-light is-primary is-feature" data-testid="feature-tag">
     <span className="icon is-small">
       <FontAwesomeIcon icon={faAsterisk} size="xs" />
     </span>
@@ -11,7 +11,7 @@ export const FeatureTag = () => (
 );
 
 export const BugTag = () => (
-  <span className="tag card-title-tag is-rounded is-light is-danger" data-testid="bug-tag">
+  <span className="tag card-title-tag is-rounded is-light is-danger is-bug" data-testid="bug-tag">
     <span className="icon is-small">
       <FontAwesomeIcon icon={faBug} size="xs" />
     </span>
@@ -19,7 +19,7 @@ export const BugTag = () => (
 );
 
 export const ChoreTag = () => (
-  <span className="tag card-title-tag is-rounded is-light is-info" data-testid="chore-tag">
+  <span className="tag card-title-tag is-rounded is-light is-info is-chore" data-testid="chore-tag">
     <span className="icon is-small">
       <FontAwesomeIcon icon={faCog} size="xs" />
     </span>
