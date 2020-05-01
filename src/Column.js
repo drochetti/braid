@@ -7,13 +7,13 @@ const activeTargetStyle = {
   border: '2px dashed hsl(0, 0%, 48%)',
   borderRadius: '5px',
   margin: '-2px',
-  background: 'hsl(0, 0%, 96%)'
+  background: 'rgba(255, 255, 255, .2)'
 };
 
 const illegalTargetStyle = {
   ...activeTargetStyle,
-  borderColor: 'hsl(348, 100%, 61%)',
-  background: 'hsl(348, 100%, 95%)'
+  borderColor: 'rgb(242, 67, 67)',
+  background: 'rgb(242, 67, 67, .2)'
 };
 
 const Column = props => {
